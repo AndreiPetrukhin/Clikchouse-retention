@@ -16,7 +16,7 @@ FROM (SELECT DISTINCT
         any(created_at) OVER (PARTITION BY user_id, toDate(created_at) ORDER BY created_at rows BETWEEN 1 PRECEDING AND 1 PRECEDING) as prev_created_at,
         video_id,
         app_context_id
-    FROM eventaudiomanager.events
+    FROM events
     WHERE True = True 
     	and toDate(events.created_at) >= toDate('2023-03-22')
     	and toDate(events.created_at) <= toDate('2023-03-27')
